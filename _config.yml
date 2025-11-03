@@ -5,14 +5,11 @@ theme: minima
 url: "https://neajuank.github.io"
 baseurl: "/Actividad-Jekill-y-Spark"
 
-
-# Permite mostrar publicaciones del directorio _posts
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Personalización del tema
 minima:
   skin: classic
   social_links:
@@ -20,7 +17,6 @@ minima:
     linkedin: juancamilorodriguez
     email: juankiudc@gmail.com
 
-# Configuración del build
 exclude:
   - venv/
   - .venv/

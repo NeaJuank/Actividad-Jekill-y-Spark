@@ -1,25 +1,32 @@
+---
+layout: default
+title: "Gymshark Analytics"
+---
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Análisis de Flujo de Datos Simulado con Spark y Jekyll</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="custom.css">
-
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/custom.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header class="page-header">
     <h1>🏋️‍♂️ Análisis de Flujo de Datos Simulado con Spark y Jekyll</h1>
     <h2>Aplicando analítica avanzada en una tienda de ropa deportiva tipo Gymshark</h2>
   </header>
 
-  <!-- 🔗 Enlace al post de Jekyll -->
-<nav>
-  <a href="{{ site.baseurl }}/2025/11/03/analisis-flujo-streaming.html">Análisis: Flujo de datos simulado</a>
-</nav>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="{{ site.baseurl }}/2025/11/03/analisis-flujo-streaming.html">
+      Análisis: Flujo de datos simulado
+    </a>
+  </nav>
 
-
+  <!-- MAIN CONTENT -->
   <main class="main-content">
     <!-- INTRODUCCIÓN -->
     <section class="intro">
@@ -68,13 +75,9 @@
         <pre><code>from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg
 
-# Crear sesión Spark
 spark = SparkSession.builder.appName("AnalisisFlujoGym").getOrCreate()
-
-# Cargar CSV simulado
 df = spark.read.csv("data_simulada.csv", header=True, inferSchema=True)
 
-# Calcular métricas por país
 metricas = df.groupBy("pais").agg(
     avg("clicks").alias("Promedio_Clicks"),
     avg("tiempo_sesion").alias("Promedio_Tiempo_Sesion")
@@ -88,7 +91,7 @@ metricas.show()</code></pre>
     <section class="streaming-section">
       <h3>🌐 Procesamiento de flujo en tiempo real</h3>
       <p>
-        A continuación se muestra un flujo simulado (Spark Streaming / bucle Python) donde se cuentan los clics por usuario en ventanas de 1 minuto:
+        A continuación se muestra un flujo simulado donde se cuentan los clics por usuario en ventanas de 1 minuto:
       </p>
 
       <div class="card code-card">
@@ -96,7 +99,6 @@ metricas.show()</code></pre>
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Simular flujo continuo
 usuarios = ["User1", "User2", "User3"]
 clicks = {"User1": 0, "User2": 0, "User3": 0}
 
@@ -107,25 +109,20 @@ for minuto in range(3):
     print(clicks)
     time.sleep(1)
 
-# Visualización
 df = pd.DataFrame(list(clicks.items()), columns=["Usuario", "Total_Clicks"])
 df.plot.bar(x="Usuario", y="Total_Clicks", legend=False, color="#1d70b8")
-plt.title("Clics por usuario (simulación en 1 minuto)")
-plt.xlabel("Usuario")
-plt.ylabel("Clics")
-plt.tight_layout()
-plt.savefig("grafico_clics.png")
+plt.savefig("grafico_clicks.png")
 plt.show()</code></pre>
       </div>
 
       <div class="card image-card">
-        <img src="assets/images/grafico_clicks.png" alt="Gráfico de clics por usuario">
+        <img src="{{ site.baseurl }}/assets/images/grafico_clicks.png" alt="Gráfico de clics por usuario">
         <p class="caption">Figura 1. Clics acumulados por usuario tras el procesamiento del flujo simulado.</p>
       </div>
 
       <div class="card image-card">
-        <img src="assets/images/ssclicksfromter.png" alt="Gráfico de clics por usuario desde terminal">
-        <p class="caption">Figura 2. Clics acumulados por minuto por parte del usuario tras el procesamiento del flujo simulado desde la terminal de Visual Studio Code (PowerShell).</p>
+        <img src="{{ site.baseurl }}/assets/images/ssclicksfromter.png" alt="Gráfico de clics desde terminal">
+        <p class="caption">Figura 2. Clics acumulados por minuto por parte del usuario tras el procesamiento del flujo simulado desde la terminal.</p>
       </div>
     </section>
 
@@ -153,9 +150,10 @@ plt.show()</code></pre>
     <section class="deployment-section">
       <h3>🚀 Despliegue y arquitectura del blog</h3>
       <ul>
-        <li>El blog se generó con <strong>Jekyll</strong> usando el tema <em>Cayman</em>.</li>
-        <li>Se desplegó en <strong>GitHub Pages</strong> para publicación estática.</li>
-        <li>La estructura incluye páginas de análisis, gráficos e informes en formato Markdown.</li>
+        <li>Generado con <strong>Jekyll</strong> usando el tema <em>Cayman</em>.</li>
+        <li>Despliegue en <strong>GitHub Pages</strong>.</li>
+        <li>Posts en formato Markdown dentro de <code>_posts/</code>.</li>
+        <li>Se usa <strong>baseurl</strong> para URLs correctas en producción.</li>
       </ul>
     </section>
 
@@ -163,14 +161,15 @@ plt.show()</code></pre>
     <section class="reflection-section">
       <h3>💡 Reflexión: Procesamiento por lotes vs Streaming</h3>
       <p>
-        El <strong>procesamiento por lotes</strong> analiza grandes volúmenes de datos históricos en intervalos definidos, 
+        El <strong>procesamiento por lotes</strong> analiza datos históricos en intervalos definidos, 
         ideal para informes y análisis profundos.  
-        En cambio, el <strong>streaming</strong> procesa los datos en tiempo real, permitiendo decisiones inmediatas basadas en eventos actuales.  
-        En el contexto empresarial, la combinación de ambos modelos permite estrategias predictivas y reactivas más efectivas.
+        El <strong>streaming</strong> permite decisiones inmediatas basadas en eventos en tiempo real.  
+        La combinación de ambos modelos permite estrategias más efectivas.
       </p>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="page-footer">
     <p>Desarrollado por <strong>Juan Camilo Rodríguez</strong> · Inspirado en el tema Cayman de Jekyll</p>
   </footer>
