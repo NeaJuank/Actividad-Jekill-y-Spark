@@ -2,8 +2,9 @@ title: "Gymshark Analytics"
 description: "Análisis de flujo de datos con PySpark y blog académico sobre analítica de streaming"
 author: "Juan Camilo Rodríguez"
 theme: minima
-baseurl: "/Actividad-Jekill-y-Spark"
 url: "https://neajuank.github.io"
+baseurl: "/Actividad-Jekill-y-Spark"
+
 
 # Permite mostrar publicaciones del directorio _posts
 markdown: kramdown
