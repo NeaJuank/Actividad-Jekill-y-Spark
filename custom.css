@@ -1,0 +1,62 @@
+/* =============================
+   🎨 Estilo personalizado - Gymshark Analytics
+   ============================= */
+
+body {
+  background-color: #121212;
+  color: #e6e6e6;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Navbar / enlaces */
+nav a {
+  color: #af0b0b;
+  font-weight: 600;
+  margin-right: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff5555;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bloques de código */
+pre, code {
+  background-color: #1e1e1e;
+  color: #00ff9d;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* Enlaces dentro del texto */
+a {
+  color: #af0b0b;
+}
+
+a:hover {
+  color: #ff4040;
+}
+
+/* Footer */
+footer {
+  background-color: #181818;
+  border-top: 1px solid #2a2a2a;
+  padding: 20px 0;
+  text-align: center;
+  color: #999;
+}
+
+footer a {
+  color: #af0b0b;
+  text-decoration: none;
+}
