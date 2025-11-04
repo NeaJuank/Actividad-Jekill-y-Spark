@@ -1,40 +1,208 @@
----
-layout: default
-title: "Gymshark Analytics"
----
+/* ===============================
+   🎨 Gymshark Analytics - style.css
+   Basado en el tema Cayman de Jekyll
+   con mejoras modernas y limpias.
+   =============================== */
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/custom.css">
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="page-header">
-    <div class="header-glow"></div>
-    <h1>🏋️‍♂️ Análisis de Flujo de Datos con Spark y Jekyll</h1>
-    <h2>Explorando la analítica de streaming al estilo <span>Gymshark</span> ⚡</h2>
-  </header>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="{{ site.baseurl }}/posts/2025-11-03-analisis-flujo-streaming/">📈 Flujo de Datos Simulado</a>
-    <a href="{{ site.baseurl }}/">🏠 Inicio</a>
-    <a href="https://github.com/NeaJuank/Actividad-Jekill-y-Spark" target="_blank">💻 Repositorio</a>
-  </nav>
+:root {
+  --primary-color: #1d70b8;       /* Azul Cayman */
+  --primary-dark: #155c91;
+  --secondary-color: #00b7ff;     /* Toque moderno */
+  --background-light: #f9fbfd;
+  --text-color: #24292e;
+  --text-muted: #555;
+  --border-color: #e5e7eb;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
 
-  <!-- MAIN -->
-  <main class="main-content">
-    {{ content }}
-  </main>
+html {
+  scroll-behavior: smooth;
+}
 
-  <!-- FOOTER -->
-  <footer class="page-footer">
-    <p>Desarrollado por <strong>Juan Camilo Rodríguez</strong> · Inspirado en el tema <em>Cayman</em></p>
-  </footer>
-</body>
-</html>
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  background: var(--background-light);
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+/* ===============================
+   🧭 HEADER
+   =============================== */
+
+.page-header {
+  background: linear-gradient(120deg, var(--primary-color), var(--primary-dark));
+  color: #fff;
+  padding: 3.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.page-header h1 {
+  font-size: 2.3rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.page-header h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 0.7rem;
+}
+
+/* ===============================
+   🧭 NAVBAR
+   =============================== */
+
+nav {
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.8rem;
+  box-shadow: 0 1px 4px var(--shadow);
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--secondary-color);
+}
+
+/* ===============================
+   📄 MAIN CONTENT
+   =============================== */
+
+.main-content {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 1rem;
+}
+
+h3 {
+  color: var(--primary-color);
+  border-left: 4px solid var(--primary-color);
+  padding-left: 10px;
+  font-weight: 600;
+  margin-top: 2.2rem;
+}
+
+/* ===============================
+   💾 CARDS
+   =============================== */
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px var(--shadow);
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   🧾 CODE BLOCKS
+   =============================== */
+
+pre {
+  background: #f5f7fa;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ===============================
+   🖼️ IMAGES
+   =============================== */
+
+.image-card {
+  text-align: center;
+}
+
+.image-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+}
+
+.image-card img:hover {
+  transform: scale(1.02);
+}
+
+.image-card .caption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ===============================
+   📋 LISTS
+   =============================== */
+
+ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+}
+
+/* ===============================
+   🧭 FOOTER
+   =============================== */
+
+.page-footer {
+  text-align: center;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px var(--shadow);
+}
+
+/* ===============================
+   📱 RESPONSIVE DESIGN
+   =============================== */
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .page-header h2 {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+}
