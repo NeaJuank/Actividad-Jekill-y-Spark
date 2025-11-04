@@ -6,10 +6,13 @@ url: "https://neajuank.github.io"
 baseurl: "/Actividad-Jekill-y-Spark"
 
 markdown: kramdown
+
+# Plugins recomendados
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Configuración del tema
 minima:
   skin: classic
   social_links:
@@ -17,9 +20,15 @@ minima:
     linkedin: juancamilorodriguez
     email: juankiudc@gmail.com
 
+# 🔧 Configuración personalizada de URLs
+# Esto hace que los posts salgan como /posts/año-mes-dia-titulo/
+permalink: /posts/:year-:month-:day-:title/
+
+# Archivos y carpetas a excluir del build
 exclude:
   - venv/
   - .venv/
   - README.md
   - "*.py"
   - "*.csv"
+  - "*.ipynb"
