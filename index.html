@@ -15,163 +15,26 @@ title: "Gymshark Analytics"
 <body>
   <!-- HEADER -->
   <header class="page-header">
-    <h1>🏋️‍♂️ Análisis de Flujo de Datos Simulado con Spark y Jekyll</h1>
-    <h2>Aplicando analítica avanzada en una tienda de ropa deportiva tipo Gymshark</h2>
+    <div class="header-glow"></div>
+    <h1>🏋️‍♂️ Análisis de Flujo de Datos con Spark y Jekyll</h1>
+    <h2>Explorando la analítica de streaming al estilo <span>Gymshark</span> ⚡</h2>
   </header>
 
   <!-- NAVBAR -->
-  <nav>
-    <a href="{{ site.baseurl }}/2025/11/03/analisis-flujo-streaming.html">
-      Análisis: Flujo de datos simulado
-    </a>
+  <nav class="navbar">
+    <a href="{{ site.baseurl }}/posts/2025-11-03-analisis-flujo-streaming/">📈 Flujo de Datos Simulado</a>
+    <a href="{{ site.baseurl }}/">🏠 Inicio</a>
+    <a href="https://github.com/NeaJuank/Actividad-Jekill-y-Spark" target="_blank">💻 Repositorio</a>
   </nav>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <main class="main-content">
-    <!-- INTRODUCCIÓN -->
-    <section class="intro">
-      <p>
-        En este proyecto aplicamos técnicas de <strong>analítica avanzada</strong> con <strong>Python</strong> y <strong>Apache Spark</strong> para procesar un flujo de datos simulado en una tienda de ropa deportiva online. 
-        El objetivo es detectar patrones de clics y navegación de usuarios en tiempo real.
-      </p>
-    </section>
-
-    <!-- ESCENARIO -->
-    <section class="scenario">
-      <h3>🚀 Escenario seleccionado</h3>
-      <p>
-        Imaginamos una tienda similar a <strong>Gymshark</strong> que analiza clics en tiempo real para entender el comportamiento del cliente, 
-        optimizar campañas y mejorar la experiencia del usuario.
-      </p>
-    </section>
-
-    <!-- DATASET -->
-    <section class="data-section">
-      <h3>📊 Dataset simulado</h3>
-      <p>
-        Se genera un archivo <code>CSV</code> con columnas como <code>usuario_id</code>, <code>producto</code>, 
-        <code>clicks</code>, <code>tiempo_sesion</code> y <code>pais</code>.
-      </p>
-
-      <div class="card code-card">
-        <pre><code>usuario_id,producto,clicks,tiempo_sesion,pais
-1,Camiseta Compresión,12,300,Colombia
-2,Leggins Mujer,8,240,México
-3,Short Hombre,20,410,España
-4,Top Deportivo,7,190,Argentina
-5,Suplementos,15,380,Chile</code></pre>
-      </div>
-    </section>
-
-    <!-- PROCESAMIENTO PYSPARK -->
-    <section class="spark-section">
-      <h3>⚙️ Procesamiento con PySpark</h3>
-      <p>
-        Se utiliza <strong>PySpark</strong> para calcular promedios de clics y tiempo de sesión por país. 
-        Este enfoque permite escalar el análisis en grandes volúmenes de datos.
-      </p>
-
-      <div class="card code-card">
-        <pre><code>from pyspark.sql import SparkSession
-from pyspark.sql.functions import avg
-
-spark = SparkSession.builder.appName("AnalisisFlujoGym").getOrCreate()
-df = spark.read.csv("data_simulada.csv", header=True, inferSchema=True)
-
-metricas = df.groupBy("pais").agg(
-    avg("clicks").alias("Promedio_Clicks"),
-    avg("tiempo_sesion").alias("Promedio_Tiempo_Sesion")
-)
-
-metricas.show()</code></pre>
-      </div>
-    </section>
-
-    <!-- STREAMING -->
-    <section class="streaming-section">
-      <h3>🌐 Procesamiento de flujo en tiempo real</h3>
-      <p>
-        A continuación se muestra un flujo simulado donde se cuentan los clics por usuario en ventanas de 1 minuto:
-      </p>
-
-      <div class="card code-card">
-        <pre><code>import time
-import pandas as pd
-import matplotlib.pyplot as plt
-
-usuarios = ["User1", "User2", "User3"]
-clicks = {"User1": 0, "User2": 0, "User3": 0}
-
-for minuto in range(3):
-    print(f"--- Minuto {minuto+1} ---")
-    for user in usuarios:
-        clicks[user] += int(10 * abs(pd.np.random.randn()))
-    print(clicks)
-    time.sleep(1)
-
-df = pd.DataFrame(list(clicks.items()), columns=["Usuario", "Total_Clicks"])
-df.plot.bar(x="Usuario", y="Total_Clicks", legend=False, color="#1d70b8")
-plt.savefig("grafico_clicks.png")
-plt.show()</code></pre>
-      </div>
-
-      <div class="card image-card">
-        <img src="{{ site.baseurl }}/assets/images/grafico_clicks.png" alt="Gráfico de clics por usuario">
-        <p class="caption">Figura 1. Clics acumulados por usuario tras el procesamiento del flujo simulado.</p>
-      </div>
-
-      <div class="card image-card">
-        <img src="{{ site.baseurl }}/assets/images/ssclicksfromter.png" alt="Gráfico de clics desde terminal">
-        <p class="caption">Figura 2. Clics acumulados por minuto por parte del usuario tras el procesamiento del flujo simulado desde la terminal.</p>
-      </div>
-    </section>
-
-    <!-- RESULTADOS -->
-    <section class="results-section">
-      <h3>📈 Resultados esperados</h3>
-      <p>
-        El procesamiento permite observar los usuarios con mayor actividad, tiempos de sesión altos y patrones por país.
-      </p>
-
-      <div class="card table-card">
-        <pre><code>+-----------+----------------+------------------------+
-| País      | Promedio_Clicks| Promedio_Tiempo_Sesion |
-+-----------+----------------+------------------------+
-| Colombia  | 12.0           | 300.0                  |
-| México    | 8.0            | 240.0                  |
-| España    | 20.0           | 410.0                  |
-| Argentina | 7.0            | 190.0                  |
-| Chile     | 15.0           | 380.0                  |
-+-----------+----------------+------------------------+</code></pre>
-      </div>
-    </section>
-
-    <!-- DESPLIEGUE -->
-    <section class="deployment-section">
-      <h3>🚀 Despliegue y arquitectura del blog</h3>
-      <ul>
-        <li>Generado con <strong>Jekyll</strong> usando el tema <em>Cayman</em>.</li>
-        <li>Despliegue en <strong>GitHub Pages</strong>.</li>
-        <li>Posts en formato Markdown dentro de <code>_posts/</code>.</li>
-        <li>Se usa <strong>baseurl</strong> para URLs correctas en producción.</li>
-      </ul>
-    </section>
-
-    <!-- CONCLUSIONES -->
-    <section class="reflection-section">
-      <h3>💡 Reflexión: Procesamiento por lotes vs Streaming</h3>
-      <p>
-        El <strong>procesamiento por lotes</strong> analiza datos históricos en intervalos definidos, 
-        ideal para informes y análisis profundos.  
-        El <strong>streaming</strong> permite decisiones inmediatas basadas en eventos en tiempo real.  
-        La combinación de ambos modelos permite estrategias más efectivas.
-      </p>
-    </section>
+    {{ content }}
   </main>
 
   <!-- FOOTER -->
   <footer class="page-footer">
-    <p>Desarrollado por <strong>Juan Camilo Rodríguez</strong> · Inspirado en el tema Cayman de Jekyll</p>
+    <p>Desarrollado por <strong>Juan Camilo Rodríguez</strong> · Inspirado en el tema <em>Cayman</em></p>
   </footer>
 </body>
 </html>
